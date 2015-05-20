@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="jumbotron fix-top-el">
+        <form class="form-horizontal" name="loginForm">
+            <fieldset>
+                <h1 class="text-center" >LOGIN</h1>
+                    <div class="form-group">
+                        <label for="Username" class="col-lg-2 control-label">Username</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="Username" placeholder="Username" ng-model="user.username">
+                        </div>
+                        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                        <div class="col-lg-10">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="user.password">
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="#/register" class="btn btn-primary">REGISTER</a>
+                        <button type="submit" ng-click="login(user, loginrForm)" class="btn btn-primary">LOGIN</button>
+                    </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>

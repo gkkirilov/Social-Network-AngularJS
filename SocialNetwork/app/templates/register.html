@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="jumbotron fix-top-el">
+    <form class="form-horizontal" name="registerForm">
+        <fieldset>
+            <h1 class="text-center" >REGISTER</h1>
+            <div class="form-group">
+                <label for="Username" class="col-lg-2 control-label">Username</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="Username" placeholder="Username" ng-model="user.username">
+                </div>
+                <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                <div class="col-lg-10">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="user.password">
+                </div>
+                <label for="confirmPassword" class="col-lg-2 control-label">Confirm Password</label>
+                <div class="col-lg-10">
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="confirm Password" ng-model="user.confirmPassword">
+                </div>
+                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                <div class="col-lg-10">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Input Email" ng-model="user.email">
+                </div>
+                <label for="name" class="col-lg-2 control-label">Name</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="name" placeholder="name" ng-model="user.name">
+                </div>
+
+                <label class="col-lg-2 control-label">Gender</label>
+                <div class="col-lg-10">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios"  value="male" checked="" ng-model="user.gender">
+                            Male
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios"  value="female" ng-model="user.gender">
+                            Female
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios"  value="other" ng-model="user.gender">
+                            Other
+                        </label>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" ng-click="register(user, registerForm)" class="btn btn-primary">REGISTER</button>
+                    <a href="#/login" class="btn btn-primary">LOGIN</a>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    </div>
+</div>
