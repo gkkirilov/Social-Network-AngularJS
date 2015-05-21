@@ -15,7 +15,7 @@ SocialNetwork.factory('authentication', function ($http, baseServiceUrl) {
     service.Register = function (registerData, success, error) {
         $http.post(serviceUrl + '/register', registerData)
             .success(function (data, status, headers, config) {
-                success(data, status, null, null);
+                success(data);
             }).error(error);
     };
 
@@ -42,15 +42,11 @@ SocialNetwork.factory('authentication', function ($http, baseServiceUrl) {
 
     service.SetCredentials = function (serverData) {
         localStorage['accessToken'] = serverData.access_token;
-        localStorage['username'] = serverData.username;
+        localStorage['username'] = serverData.userName;
     };
 
     service.GetUsername = function () {
         return localStorage['username'];
-    };
-
-    service.GetIsAdmin = function () {
-        return localStorage['isAdmin'];
     };
 
     service.ClearCredentials = function () {
