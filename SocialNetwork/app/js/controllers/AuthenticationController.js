@@ -1,6 +1,8 @@
 'use strict';
 
-SocialNetwork.controller('AuthenticationController', function ($scope, $location, $route, authentication, notifyService) {
+SocialNetwork.controller('AuthenticationController', function ($scope, $location, $route, authentication, notifyService, userServices) {
+
+
 
     var ClearData = function () {
         $scope.loginData = "";

@@ -12,27 +12,29 @@ SocialNetwork.config(function ($routeProvider, $locationProvider) {
         })
         .when('/login', {
             templateUrl: 'templates/login.html',
-            controller: 'AuthenticationController'
+            controller: ''
         })
         .when('/register', {
             templateUrl: 'templates/register.html',
-            controller: 'AuthenticationController'
+            controller: ''
         })
         .when('/feed', {
             templateUrl: 'templates/feedPage.html',
-            controller: ''
+            controller: 'MainController'
         })
         .when('/profile',{
             templateUrl: 'templates/profile.html',
-            controller: 'AuthenticationController'
+            controller: 'MainController'
         })
         .when('/profile/password',{
             templateUrl: 'templates/changePassword.html',
-            controller: 'AuthenticationController'
+            controller: 'MainController'
+        })
+        .when('/friends',{
+            templateUrl: 'templates/friends.html',
+            controller: 'MainController'
         })
         .otherwise({redirectTo: '/'})
-
-        //$locationProvider.html5Mode(true);
 });
 
 
