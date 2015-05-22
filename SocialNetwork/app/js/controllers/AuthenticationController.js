@@ -1,6 +1,6 @@
 'use strict';
 
-SocialNetwork.controller('AuthenticationController', function ($scope, $location, authentication, notifyService) {
+SocialNetwork.controller('AuthenticationController', function ($scope, $location, $route, authentication, notifyService) {
 
     var ClearData = function () {
         $scope.loginData = "";
@@ -33,4 +33,36 @@ SocialNetwork.controller('AuthenticationController', function ($scope, $location
                 notifyService.showError("Unsuccessful Register!", serverError)
             });
     };
+
+    $scope.logout = function () {
+        notifyService.showInfo("Successful Logout!");
+        ClearData();
+        authentication.ClearCredentials();
+        //mainData.clearParams();
+        //$route.reload();
+    };
+
+    $scope.editUser = function () {
+        authentication.EditUserProfile($scope.userData,function(serverData) {
+                notifyService.showInfo("Successful Profile Edit!");
+                ClearData();
+                $location.path('/feed');
+            },
+            function (serverError) {
+                notifyService.showError("Unsuccessful Profile Edit!", serverError)
+            });
+    };
+
+    $scope.changePassword = function () {
+        authentication.ChangePassword($scope.passwordData,
+            function() {
+                notifyService.showInfo("Successful Password Change!");
+                ClearData();
+                $location.path('/feed');
+            },
+            function (serverError) {
+                notifyService.showError("Unsuccessful Password Change!", serverError)
+            });
+    };
+
 });

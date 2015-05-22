@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="MainController">
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="AuthenticationController">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -16,9 +16,9 @@
                 <li><a href="#/"><span class="glyphicon glyphicon-comment"></span></a></li>
 
                 <li><a href="#/"><span class="glyphicon glyphicon-ice-lolly-tasted"></span></a></li>
-                <li><a href="#/"><span class="glyphicon glyphicon-cog"></span></a></li>
-                <li><a href="#/"><span class="glyphicon glyphicon-wrench"></span></a></li>
-                <li><a href="#/"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                <li><a href="#/profile"><span class="glyphicon glyphicon-cog"></span></a></li>
+                <li><a href="#/profile/password"><span class="glyphicon glyphicon-wrench"></span></a></li>
+                <li><a href="#/" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span></a></li>
             </ul>
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">

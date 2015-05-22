@@ -1,0 +1,46 @@
+<div ng-include="'templates/navbar.html'"></div>
+<div class="container">
+    <div class="jumbotron fix-top-el">
+        <form class="form-horizontal" ng-submit="editUser()" name="registerForm">
+            <fieldset>
+                <h1 class="text-center" >Change Profile</h1>
+                <div class="form-group">
+                    <label for="name" class="col-lg-2 control-label">Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="name" placeholder="New Name" ng-model="userData.name">
+                    </div>
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                    <div class="col-lg-10">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="New Email" ng-model="userData.email" required="required">
+                    </div>
+                    <label class="col-lg-2 control-label">Gender</label>
+                    <div class="col-lg-10">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios"  value="male" checked="" ng-model="userData.gender" required="required">
+                                Male
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios"  value="female" ng-model="userData.gender" required="required">
+                                Female
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios"  value="other" ng-model="userData.gender" required="required">
+                                Other
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Change Profile</button>
+                        <a href="#/feed" class="btn btn-primary">Cancel</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
