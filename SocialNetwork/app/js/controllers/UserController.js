@@ -2,27 +2,32 @@
 
 SocialNetwork.controller('UserController', function ($scope, $location, $route, authentication, notifyService, userServices) {
 
-    $scope.mineFriends = {};
+    var ClearData = function () {
+        $scope.postData = "";
+    };
 
     $scope.myFriends = function () {
-        userServices.MyFriends(function (serverData) {
-
-                console.log($scope.mineFriends);
+        userServices.MyFriends(
+            function (serverData) {
+                $scope.friends=serverData;
             },
             function (serverError) {
-                notifyService.showError("Unsuccessful Register!", serverError)
+                notifyService.showError("Unsuccessful Show Of Friends!", serverError)
             });
     };
 
-        /*$scope.login = function () {
-        authentication.Login($scope.loginData,
+    $scope.addPost = function () {
+        postData['username']=localStorage[username];
+        userServices.AddPost($scope.postData,
             function (serverData) {
-                notifyService.showInfo("Successful Login!");
-                authentication.SetCredentials(serverData);
-                ClearData();
-                $location.path('/feed');
-            }, function (serverError) {
-                notifyService.showError("Unsuccessful Login!", serverError)
+                notifyService.showInfo("Successfully added a new post!");
+                $route.reload();
+            },
+            function (serverError) {
+                notifyService.showError("Couldnt add new post", serverError)
             });
-        };*/
+    };
+
+
+
 });

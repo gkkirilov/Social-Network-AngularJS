@@ -13,6 +13,14 @@
                     <div class="col-lg-10">
                         <input type="email" class="form-control" id="inputEmail" placeholder="New Email" ng-model="userData.email" required="required">
                     </div>
+                    <label for="profileImage" class="control-label col-lg-">Profile Image</label>
+                    <div class="col-lg-">
+                        <input id="profileImage" type='file' ng-model='userData.profileImageData'>
+                    </div>
+                    <label for="coverImage" class="control-label col-lg-">Cover Image</label>
+                    <div class="col-lg-">
+                        <input id="coverImage" type='file' ng-model='userData.coverImageData'>
+                    </div>
                     <label class="col-lg-2 control-label">Gender</label>
                     <div class="col-lg-10">
                         <div class="radio">
@@ -39,6 +47,7 @@
                         <button type="submit" class="btn btn-primary">Change Profile</button>
                         <a href="#/feed" class="btn btn-primary">Cancel</a>
                     </div>
+
                 </div>
             </fieldset>
         </form>

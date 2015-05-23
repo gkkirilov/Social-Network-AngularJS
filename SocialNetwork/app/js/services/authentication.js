@@ -19,7 +19,7 @@ SocialNetwork.factory('authentication', function ($http, baseServiceUrl) {
             }).error(error);
     };
 
-    service.Logout = function ( success, error) {
+    service.Logout = function (success, error) {
         $http.post(serviceUrl + '/logout', registerData)
             .success(function (data, status, headers, config) {
                 success(data);
