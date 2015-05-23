@@ -38,6 +38,10 @@ SocialNetwork.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'templates/logout.html',
             controller: 'MainController'
         })
+        .when('/users/:username',{
+            templateUrl: 'templates/userWall.html',
+            controller: 'MainController'
+        })
         .otherwise({redirectTo: '/'})
 });
 

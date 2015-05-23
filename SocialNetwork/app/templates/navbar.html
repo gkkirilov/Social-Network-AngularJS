@@ -13,8 +13,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
                 <li><a href="#/feed" ng-bind="username"><span class="sr-only">(current)</span></a></li>
-                <li><a href="#/"><i class="fa fa-bed"></i></a></li>
-                <li><a href="#/friends"><span  class="fa fa-users"></span></a></li>
+                <li><a href="#/" class="fa fa-user-plus" ng-controller="UserController" ng-init="getFriendRequests()" ng-show="friendRequests.length">{{friendRequests.length}}<span class="badge"></span></a></li>
+                <li><a href="#/friends"><span class="fa fa-users"></span></a></li>
                 <li><a href="#/profile"><span class="glyphicon glyphicon-cog"></span></a></li>
                 <li><a href="#/profile/password"><span class="glyphicon glyphicon-wrench"></span></a></li>
                 <li><a href="#/logout" ><span class="glyphicon glyphicon-log-out"></span></a></li>

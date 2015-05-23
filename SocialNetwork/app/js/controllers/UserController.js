@@ -48,4 +48,14 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
             });
     };
 
+    $scope.getFriendRequests = function () {
+        userServices.GetFriendRequests(
+            function (serverData) {
+                $scope.friendRequests=serverData;
+            },
+            function (serverError) {
+                notifyService.showError("Couldn't get user data.", serverError)
+            });
+    };
+
 });

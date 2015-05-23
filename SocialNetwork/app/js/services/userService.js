@@ -33,6 +33,13 @@ SocialNetwork.factory('userServices', function ($http, baseServiceUrl) {
             }).error(error);
     };
 
+    user.GetFriendRequests = function (success, error) {
+        $http.get(baseServiceUrl + '/me/requests', {headers: this.GetHeaders()})
+            .success(function (data) {
+                success(data)
+            }).error(error);
+    };
+
 
     user.GetHeaders = function() {
         return {
