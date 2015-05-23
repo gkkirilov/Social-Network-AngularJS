@@ -7,35 +7,35 @@ SocialNetwork.factory('authentication', function ($http, baseServiceUrl) {
 
     service.Login = function (loginData, success, error) {
         $http.post(serviceUrl + '/login', loginData)
-            .success(function (data, status, headers, config) {
+            .success(function (data) {
                 success(data);
             }).error(error);
     };
 
     service.Register = function (registerData, success, error) {
         $http.post(serviceUrl + '/register', registerData)
-            .success(function (data, status, headers, config) {
+            .success(function (data) {
                 success(data);
             }).error(error);
     };
 
     service.Logout = function (success, error) {
         $http.post(serviceUrl + '/logout', registerData)
-            .success(function (data, status, headers, config) {
+            .success(function (data) {
                 success(data);
             }).error(error);
     };
 
     service.GetUserProfile = function (success, error) {
         $http.get(baseServiceUrl + '/me', {headers: this.GetHeaders()})
-            .success(function (data, status, headers, config) {
+            .success(function (data) {
                 success(data)
             }).error(error);
     };
 
     service.EditUserProfile = function (editUserData, success, error) {
         $http.put(baseServiceUrl + '/me', editUserData, {headers: this.GetHeaders()})
-            .success(function (data, status, headers, config) {
+            .success(function (data) {
                 success(data)
             }).error(error);
     };

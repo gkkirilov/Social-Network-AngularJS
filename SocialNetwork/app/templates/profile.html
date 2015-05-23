@@ -1,31 +1,38 @@
 <div ng-include="'templates/navbar.html'"></div>
 <div class="container" ng-controller="AuthenticationController">
     <div class="jumbotron fix-top-el">
-        <form class="form-horizontal" ng-submit="editUser()" name="registerForm">
+        <form class="form-horizontal" ng-submit="editUser()" ng-init="getUserProfile()" name="registerForm">
             <fieldset>
                 <h1 class="text-center" >Change Profile</h1>
                 <div class="form-group">
                     <label for="name" class="col-lg-2 control-label">Name</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" id="name" placeholder="New Name" ng-model="userData.name">
+                        <input type="text" class="form-control" id="name" placeholder="{{userCurrentData.name}}" ng-model="userData.name">
                     </div>
                     <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                     <div class="col-lg-10">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="New Email" ng-model="userData.email" required="required">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="{{userCurrentData.email}}" ng-model="userData.email" required="required">
                     </div>
+                    <div class="col-lg-2"></div>
+                    <div class="container center-block col-lg-6">
                     <label for="profileImage" class="control-label col-lg-">Profile Image</label>
-                    <div class="col-lg-">
+                    <div class="container">
+                        <img class="" data-ng-src="{{userCurrentData.profileImageData}}" alt="Profile Picture"/>
                         <input id="profileImage" type='file' ng-model='userData.profileImageData'>
                     </div>
+                    </div>
+                    <div class="container center-block col-lg-4">
                     <label for="coverImage" class="control-label col-lg-">Cover Image</label>
                     <div class="col-lg-">
+                        <img class="" data-ng-src="{{userCurrentData.coverImageData}}" alt="Profile Picture"/>
                         <input id="coverImage" type='file' ng-model='userData.coverImageData'>
+                    </div>
                     </div>
                     <label class="col-lg-2 control-label">Gender</label>
                     <div class="col-lg-10">
                         <div class="radio">
                             <label>
-                                <input type="radio" name="optionsRadios"  value="male" checked="" ng-model="userData.gender" required="required">
+                                <input type="radio" name="optionsRadios"  value="male"  ng-model="userData.gender" required="required">
                                 Male
                             </label>
                         </div>

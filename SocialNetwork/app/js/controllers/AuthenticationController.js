@@ -1,6 +1,6 @@
 'use strict';
 
-SocialNetwork.controller('AuthenticationController', function ($scope, $location, $route, authentication, notifyService, userServices) {
+SocialNetwork.controller('AuthenticationController', function ($scope, $location, $route, authentication, notifyService,$base64, userServices) {
 
 
 
@@ -36,6 +36,16 @@ SocialNetwork.controller('AuthenticationController', function ($scope, $location
             });
     };
 
+    $scope.getUserProfile = function () {
+        authentication.GetUserProfile(
+            function (serverData) {
+                $scope.userCurrentData=serverData;
+            },
+            function (serverError) {
+                notifyService.showError("Couldn't get user data.", serverError)
+            });
+    };
+
     $scope.logout = function () {
         notifyService.showInfo("Successful Logout!");
         ClearData();
@@ -45,7 +55,8 @@ SocialNetwork.controller('AuthenticationController', function ($scope, $location
     };
 
     $scope.editUser = function () {
-        authentication.EditUserProfile($scope.userData,function(serverData) {
+        authentication.EditUserProfile(
+            $scope.userData,function(serverData) {
                 notifyService.showInfo("Successful Profile Edit!");
                 ClearData();
                 $location.path('/feed');
@@ -66,5 +77,7 @@ SocialNetwork.controller('AuthenticationController', function ($scope, $location
                 notifyService.showError("Unsuccessful Password Change!", serverError)
             });
     };
+
+
 
 });

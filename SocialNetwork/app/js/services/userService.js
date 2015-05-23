@@ -19,6 +19,14 @@ SocialNetwork.factory('userServices', function ($http, baseServiceUrl) {
             }).error(error);
     };
 
+    user.GetUserFullData = function (success, error) {
+        $http.get(baseServiceUrl + '/users/'+localStorage['username'], {headers: this.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data)
+            }).error(error);
+    };
+
+
     user.GetHeaders = function() {
         return {
             Authorization: "Bearer " + localStorage['accessToken']

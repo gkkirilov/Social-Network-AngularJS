@@ -3,7 +3,7 @@
 SocialNetwork.controller('UserController', function ($scope, $location, $route, authentication, notifyService, userServices) {
 
     var ClearData = function () {
-        $scope.postData = "";
+        $scope.userCurrentData = "";
     };
 
     $scope.myFriends = function () {
@@ -16,7 +16,7 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
             });
     };
 
-    $scope.addPost = function () {
+   $scope.addPost = function () {
         postData['username']=localStorage[username];
         userServices.AddPost($scope.postData,
             function (serverData) {
@@ -28,6 +28,14 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
             });
     };
 
-
+    $scope.getUserFullData = function () {
+        userServices.GetUserFullData(
+            function (serverData) {
+                $scope.userCurrentData=serverData;
+            },
+            function (serverError) {
+                notifyService.showError("Couldn't get user data.", serverError)
+            });
+    };
 
 });
