@@ -8,7 +8,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon navbar-inverse">Name filter: </span>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" ng-model="search.name">
                                     <span class="input-group-btn">
                                       <button class="btn btn-default" type="button">Search</button>
                                     </span>
@@ -30,8 +30,8 @@
                                 <h3 class="panel-title">Friends<span></span></h3>
                             </div>
                             <div class="panel-body">
-                                <div class="col-lg-6" ng-repeat="friend in friends">
-                                    <div class="jumbotron">
+                                <div class="col-lg-6" ng-repeat="friend in friends | filter:search:strict">
+                                    <div>
                                         <img data-ng-src="{{friend.profileImageData}}"/>
                                         <span ng-bind="friend.name"></span>
                                     </div>

@@ -16,6 +16,16 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
             });
     };
 
+    $scope.myFriendsPreview = function () {
+        userServices.MyFriendsPreview(
+            function (serverData) {
+                $scope.friendsPreview=serverData;
+            },
+            function (serverError) {
+                notifyService.showError("Unsuccessful Show Of Friends!", serverError)
+            });
+    };
+
    $scope.addPost = function () {
         postData['username']=localStorage[username];
         userServices.AddPost($scope.postData,

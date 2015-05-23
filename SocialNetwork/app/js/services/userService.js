@@ -12,6 +12,13 @@ SocialNetwork.factory('userServices', function ($http, baseServiceUrl) {
             }).error(error);
     };
 
+    user.MyFriendsPreview = function (success, error) {
+        $http.get(baseServiceUrl + '/me/friends/preview', {headers: this.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data)
+            }).error(error);
+    };
+
     user.AddPost = function (postData, success, error) {
         $http.post(baseServiceUrl + '/posts', postData, {headers: this.GetHeaders()})
             .success(function (data, status, headers, config) {

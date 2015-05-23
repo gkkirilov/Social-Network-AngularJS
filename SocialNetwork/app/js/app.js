@@ -34,6 +34,10 @@ SocialNetwork.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'templates/friends.html',
             controller: 'MainController'
         })
+        .when('/logout',{
+            templateUrl: 'templates/logout.html',
+            controller: 'MainController'
+        })
         .otherwise({redirectTo: '/'})
 });
 

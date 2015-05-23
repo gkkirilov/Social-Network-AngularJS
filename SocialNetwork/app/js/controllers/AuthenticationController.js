@@ -49,6 +49,7 @@ SocialNetwork.controller('AuthenticationController', function ($scope, $location
     $scope.logout = function () {
         notifyService.showInfo("Successful Logout!");
         ClearData();
+        $location.path('/');
         authentication.ClearCredentials();
         //mainData.clearParams();
         //$route.reload();
