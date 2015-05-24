@@ -42,7 +42,6 @@ SocialNetwork.controller('PostController', function ($scope, $location, $route, 
         postServices.LikePost(id,authentication.GetHeaders(),
             function (serverData) {
                 notifyService.showInfo("Successfully liked the post!");
-                console.log(serverData);
             },
             function (serverError) {
                 notifyService.showError("Couldn't like the post", serverError)
@@ -50,15 +49,28 @@ SocialNetwork.controller('PostController', function ($scope, $location, $route, 
     };
 
     $scope.deletePost = function (id) {
-        console.log(id);
         postServices.DeletePost(id,authentication.GetHeaders(),
             function (serverData) {
                 notifyService.showInfo("Successfully deleted the post!");
-                console.log(serverData);
+                $route.reload();
             },
             function (serverError) {
                 notifyService.showError("Couldn't delete the post", serverError)
             });
     };
 
+
+    $scope.getUserFriendsPreview = function () {
+            var path = $routeParams.username;
+            console.log(path);
+
+            postServices.GetUserFriendsPreview(path,authentication.GetHeaders(),
+                function (serverData) {
+                    console.log(serverData);
+                    $scope.UserFriendsPreview=serverData;
+                },
+                function (serverError) {
+                    notifyService.showError("Couldn't get the data", serverError)
+                });
+        };
 });

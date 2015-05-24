@@ -51,9 +51,9 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
     };
 
     $scope.acceptFriendRequest = function (id) {
-        userServices.AcceptFriendRequest(id,authentication.GetHeaders(),
+        userServices.AcceptFriendRequest(id, authentication.GetHeaders(),
             function (serverData) {
-                console.log(serverData);
+                notifyService.showInfo("Accepted Friend request");
             },
             function (serverError) {
                 notifyService.showError("Couldn't accept friend requests.", serverError)
@@ -61,10 +61,8 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
     };
 
     $scope.declineFriendRequest = function (id) {
-        console.log("tuka ami ne");
-        userServices.DeclineFriendRequest(id,authentication.GetHeaders(),
+        userServices.DeclineFriendRequest(id, authentication.GetHeaders(),
             function (serverData) {
-                console.log("tuka 222222ne");
                 success(serverData);
             },
             function (serverError) {
@@ -73,7 +71,7 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
     };
 
     $scope.sendFriendRequest = function (username) {
-        userServices.SendFriendRequest(username,authentication.GetHeaders(),
+        userServices.SendFriendRequest(username, authentication.GetHeaders(),
             function (serverData) {
                 success(serverData);
             },
