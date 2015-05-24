@@ -17,24 +17,13 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
     };
 
     $scope.myFriendsPreview = function () {
-        userServices.MyFriendsPreview(
+        var path = $routeParams.username;
+        userServices.MyFriendsPreview(path,
             function (serverData) {
                 $scope.friendsPreview=serverData;
             },
             function (serverError) {
                 notifyService.showError("Unsuccessful Show Of Friends!", serverError)
-            });
-    };
-
-   $scope.addPost = function () {
-        postData['username']=localStorage[username];
-        userServices.AddPost($scope.postData,
-            function (serverData) {
-                notifyService.showInfo("Successfully added a new post!");
-                $route.reload();
-            },
-            function (serverError) {
-                notifyService.showError("Couldnt add new post", serverError)
             });
     };
 
@@ -54,7 +43,7 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
                 $scope.friendRequests=serverData;
             },
             function (serverError) {
-                notifyService.showError("Couldn't get user data.", serverError)
+                notifyService.showError("Couldn't get friend requests.", serverError)
             });
     };
 

@@ -19,15 +19,9 @@ SocialNetwork.factory('userServices', function ($http, baseServiceUrl) {
             }).error(error);
     };
 
-    user.AddPost = function (postData, success, error) {
-        $http.post(baseServiceUrl + '/posts', postData, {headers: this.GetHeaders()})
-            .success(function (data, status, headers, config) {
-                success(data)
-            }).error(error);
-    };
-
-    user.GetUserFullData = function (success, error) {
-        $http.get(baseServiceUrl + '/users/'+localStorage['username'], {headers: this.GetHeaders()})
+    //TODO: change that it gets current logged user data instead of other users data
+    user.GetUserFullData = function (path,success, error) {
+        $http.get(baseServiceUrl + '/users/' + path, {headers: this.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data)
             }).error(error);
