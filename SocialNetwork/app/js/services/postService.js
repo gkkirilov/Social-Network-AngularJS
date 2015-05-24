@@ -19,7 +19,15 @@ SocialNetwork.factory('postServices', function ($http, baseServiceUrl) {
     };
 
     post.AddPost = function (postData, success, error) {
-        $http.post(baseServiceUrl + '/posts', postData, {headers: this.GetHeaders()})
+        $http.post(baseServiceUrl + '/Posts', postData, {headers: this.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data)
+            }).error(error);
+    };
+
+
+    post.LikePost = function (id, success, error) {
+        $http.post(baseServiceUrl + '/Posts/' + id + '/likes', {headers: this.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data)
             }).error(error);

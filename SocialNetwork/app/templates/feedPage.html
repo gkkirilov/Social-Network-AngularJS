@@ -10,7 +10,8 @@
                             <img class="col-lg-3" data-ng-src="{{feed.author.profileImageData}}" alt="Profile Picture"/>
                             <div class="top-left">{{feed.author.name}}</div>
                             <span class="small">{{feed.date | date:"MM/dd/yyyy 'at' h:mma"}}</span>
-                            <div class="badge pull-right " >Likes {{feed.likesCount}}</div>
+                            <button class="btn btn-info pull-right" id="likeButton" ng-click="likePost(feed.id)">Like</button>
+                            <div class="badge pull-right" >Likes {{feed.likesCount}}</div>
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -30,10 +31,10 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Friends {{friendsPreview.friends.length}}</h3>
                         </div>
-                        <a class="panel-body" ng-repeat="friend in friendsPreview.friends | limitTo:6">
+                        <div class="panel-body" ng-repeat="friend in friendsPreview.friends | limitTo:6">
                             <img data-ng-src="{{friend.profileImageData}}"/>
                             <span ng-bind="friend.name"></span>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>

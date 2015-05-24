@@ -34,7 +34,19 @@ SocialNetwork.controller('PostController', function ($scope, $location, $route, 
                 $route.reload();
             },
             function (serverError) {
-                notifyService.showError("Couldnt add new post", serverError)
+                notifyService.showError("Couldn't add new post", serverError)
             });
     };
+
+    $scope.likePost = function (id) {
+        postServices.LikePost(id,
+            function (serverData) {
+                notifyService.showInfo("Successfully liked the post!");
+                console.log(serverData);
+            },
+            function (serverError) {
+                notifyService.showError("Couldn't like the post", serverError)
+            });
+    };
+
 });
