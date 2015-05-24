@@ -18,12 +18,14 @@
                         <button class="fa fa-user-plus btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             {{friendRequests.length}}
                         </button>
-                        <ul class="dropdown-menu">
-                            <li ng-repeat="item in friendRequests">
+                        <ul class="dropdown-menu" id="dropDownMenu">
+                            <li ng-repeat="item in friendRequests" class="panel panel-info">
                                 <img data-ng-src="{{item.user.profileImageData}}" alt="Profile Picture"/>
-                                <span>"{{item.user.name}}"</span>
-                                <button ng-click="acceptFriendRequest(item.id)">Accept</button>
-                                <button ng-click="declineFriendRequest(item.id)">Reject</button>
+                                <span class="text-center top-right">"{{item.user.name}}"</span>
+                                <div class="btn-group">
+                                <button class="btn btn-info" ng-click="acceptFriendRequest(item.id)">Accept</button>
+                                <button class="btn btn-danger" ng-click="declineFriendRequest(item.id)">Reject</button>
+                                </div>
                             </li>
                         </ul>
                     </div>

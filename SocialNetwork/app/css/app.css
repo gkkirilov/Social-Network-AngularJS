@@ -24,3 +24,7 @@ img{
 #likeButton{
     text-decoration:none;
 }
+
+#dropDownMenu{
+    width: 400px !important;
+}

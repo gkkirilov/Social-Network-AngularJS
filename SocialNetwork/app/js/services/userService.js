@@ -5,30 +5,30 @@ SocialNetwork.factory('userServices', function ($http, baseServiceUrl) {
 
     user.params ={};
 
-    user.MyFriends = function (success, error) {
-        $http.get(baseServiceUrl + '/me/friends', {headers: this.GetHeaders()})
+    user.MyFriends = function (headers, success, error) {
+        $http.get(baseServiceUrl + '/me/friends', {headers: headers})
             .success(function (data, status, headers, config) {
                 success(data)
             }).error(error);
     };
 
-    user.MyFriendsPreview = function (success, error) {
-        $http.get(baseServiceUrl + '/me/friends/preview', {headers: this.GetHeaders()})
+    user.MyFriendsPreview = function (headers, success, error) {
+        $http.get(baseServiceUrl + '/me/friends/preview', {headers:headers})
             .success(function (data, status, headers, config) {
                 success(data)
             }).error(error);
     };
 
 
-    user.GetUserFullData = function (path,success, error) {
-        $http.get(baseServiceUrl + '/users/' + path, {headers: this.GetHeaders()})
+    user.GetUserFullData = function (path, headers, success, error) {
+        $http.get(baseServiceUrl + '/users/' + path, {headers: headers})
             .success(function (data, status, headers, config) {
                 success(data)
             }).error(error);
     };
 
-    user.GetFriendRequests = function (success, error) {
-        $http.get(baseServiceUrl + '/me/requests', {headers: this.GetHeaders()})
+    user.GetFriendRequests = function (headers, success, error) {
+        $http.get(baseServiceUrl + '/me/requests', {headers: headers})
             .success(function (data, headers) {
                 success(data)
             }).error(error);
@@ -41,8 +41,8 @@ SocialNetwork.factory('userServices', function ($http, baseServiceUrl) {
             }).error(error);
     };
 
-    user.DeclineFriendRequest = function (id, success, error) {
-        $http.put(baseServiceUrl + '/me/requests/'+ id + '?status=rejected', {headers: this.GetHeaders()})
+    user.DeclineFriendRequest = function (id, headers, success, error) {
+        $http.put(baseServiceUrl + '/me/requests/'+ id + '?status=rejected', {headers: headers})
             .success(function (data, headers) {
                 console.log("tuka ne me kefi");
                 success(data)
@@ -54,12 +54,6 @@ SocialNetwork.factory('userServices', function ($http, baseServiceUrl) {
             .success(function (data) {
                 success(data)
             }).error(error);
-    };
-
-    user.GetHeaders = function() {
-        return {
-            Authorization: "Bearer " + localStorage['accessToken']
-        };
     };
 
     return user;

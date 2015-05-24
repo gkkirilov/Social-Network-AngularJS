@@ -7,7 +7,7 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
     };
 
     $scope.myFriends = function () {
-        userServices.MyFriends(
+        userServices.MyFriends(authentication.GetHeaders(),
             function (serverData) {
                 $scope.friends=serverData;
             },
@@ -17,7 +17,7 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
     };
 
     $scope.myFriendsPreview = function () {
-        userServices.MyFriendsPreview(
+        userServices.MyFriendsPreview(authentication.GetHeaders(),
             function (serverData) {
                 $scope.friendsPreview=serverData;
             },
@@ -31,7 +31,7 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
         if(path==localStorage['username']){
             $location.path('/feed');
         }
-        userServices.GetUserFullData(path,
+        userServices.GetUserFullData(path,authentication.GetHeaders(),
             function (serverData) {
                 $scope.userCurrentData=serverData;
             },
@@ -41,7 +41,7 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
     };
 
     $scope.getFriendRequests = function () {
-        userServices.GetFriendRequests(
+        userServices.GetFriendRequests(authentication.GetHeaders(),
             function (serverData) {
                 $scope.friendRequests=serverData;
             },
@@ -62,7 +62,7 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
 
     $scope.declineFriendRequest = function (id) {
         console.log("tuka ami ne");
-        userServices.DeclineFriendRequest(id,
+        userServices.DeclineFriendRequest(id,authentication.GetHeaders(),
             function (serverData) {
                 console.log("tuka 222222ne");
                 success(serverData);

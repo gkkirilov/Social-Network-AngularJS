@@ -5,7 +5,7 @@ SocialNetwork.controller('PostController', function ($scope, $location, $route, 
     var postData = {};
 
     $scope.showMyFeed = function () {
-        postServices.ShowMyFeed(
+        postServices.ShowMyFeed(authentication.GetHeaders(),
             function (serverData) {
                 $scope.feedData=serverData;
             },
@@ -16,7 +16,7 @@ SocialNetwork.controller('PostController', function ($scope, $location, $route, 
 
     $scope.showUserWall = function () {
         var path = $routeParams.username;
-        postServices.ShowUserWall(path,
+        postServices.ShowUserWall(path,authentication.GetHeaders(),
             function (serverData) {
                 $scope.feedData=serverData;
             },
@@ -28,7 +28,7 @@ SocialNetwork.controller('PostController', function ($scope, $location, $route, 
     $scope.addPost = function () {
         var path = $routeParams.username;
         $scope.postData['Username'] = path;
-        postServices.AddPost($scope.postData,
+        postServices.AddPost($scope.postData,authentication.GetHeaders(),
             function (serverData) {
                 notifyService.showInfo("Successfully added a new post!");
                 $route.reload();
@@ -39,7 +39,7 @@ SocialNetwork.controller('PostController', function ($scope, $location, $route, 
     };
 
     $scope.likePost = function (id) {
-        postServices.LikePost(id,
+        postServices.LikePost(id,authentication.GetHeaders(),
             function (serverData) {
                 notifyService.showInfo("Successfully liked the post!");
                 console.log(serverData);
@@ -51,7 +51,7 @@ SocialNetwork.controller('PostController', function ($scope, $location, $route, 
 
     $scope.deletePost = function (id) {
         console.log(id);
-        postServices.DeletePost(id,
+        postServices.DeletePost(id,authentication.GetHeaders(),
             function (serverData) {
                 notifyService.showInfo("Successfully deleted the post!");
                 console.log(serverData);
