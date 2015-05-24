@@ -1,6 +1,6 @@
 'use strict';
 
-SocialNetwork.controller('UserController', function ($scope, $location, $route, authentication, notifyService, userServices) {
+SocialNetwork.controller('UserController', function ($scope, $location, $route, $routeParams, authentication, notifyService, userServices) {
 
     var ClearData = function () {
         $scope.userCurrentData = "";
@@ -17,8 +17,7 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
     };
 
     $scope.myFriendsPreview = function () {
-        var path = $routeParams.username;
-        userServices.MyFriendsPreview(path,
+        userServices.MyFriendsPreview(
             function (serverData) {
                 $scope.friendsPreview=serverData;
             },
@@ -28,7 +27,11 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
     };
 
     $scope.getUserFullData = function () {
-        userServices.GetUserFullData(
+        var path = $routeParams.username;
+        if(path==localStorage['username']){
+            $location.path('/feed');
+        }
+        userServices.GetUserFullData(path,
             function (serverData) {
                 $scope.userCurrentData=serverData;
             },
@@ -44,6 +47,38 @@ SocialNetwork.controller('UserController', function ($scope, $location, $route, 
             },
             function (serverError) {
                 notifyService.showError("Couldn't get friend requests.", serverError)
+            });
+    };
+
+    $scope.acceptFriendRequest = function (id) {
+        userServices.AcceptFriendRequest(id,authentication.GetHeaders(),
+            function (serverData) {
+                console.log(serverData);
+            },
+            function (serverError) {
+                notifyService.showError("Couldn't accept friend requests.", serverError)
+            });
+    };
+
+    $scope.declineFriendRequest = function (id) {
+        console.log("tuka ami ne");
+        userServices.DeclineFriendRequest(id,
+            function (serverData) {
+                console.log("tuka 222222ne");
+                success(serverData);
+            },
+            function (serverError) {
+                notifyService.showError("Couldn't decline friend requests.", serverError)
+            });
+    };
+
+    $scope.sendFriendRequest = function (username) {
+        userServices.SendFriendRequest(username,authentication.GetHeaders(),
+            function (serverData) {
+                success(serverData);
+            },
+            function (serverError) {
+                notifyService.showError("Couldn't send friend requests.", serverError)
             });
     };
 

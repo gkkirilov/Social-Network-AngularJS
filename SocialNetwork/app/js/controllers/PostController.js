@@ -2,9 +2,7 @@
 
 SocialNetwork.controller('PostController', function ($scope, $location, $route, $routeParams, authentication, notifyService, userServices, postServices) {
 
-
-        var postData = {};
-
+    var postData = {};
 
     $scope.showMyFeed = function () {
         postServices.ShowMyFeed(
@@ -21,10 +19,9 @@ SocialNetwork.controller('PostController', function ($scope, $location, $route, 
         postServices.ShowUserWall(path,
             function (serverData) {
                 $scope.feedData=serverData;
-                console.log(serverData);
             },
             function (serverError) {
-                notifyService.showError("Unsuccessful Show Of Friends!", serverError)
+                notifyService.showError("Cant show user wall!", serverError)
             });
     };
 

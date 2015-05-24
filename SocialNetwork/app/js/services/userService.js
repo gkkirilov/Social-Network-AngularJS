@@ -19,7 +19,7 @@ SocialNetwork.factory('userServices', function ($http, baseServiceUrl) {
             }).error(error);
     };
 
-    //TODO: change that it gets current logged user data instead of other users data
+
     user.GetUserFullData = function (path,success, error) {
         $http.get(baseServiceUrl + '/users/' + path, {headers: this.GetHeaders()})
             .success(function (data, status, headers, config) {
@@ -29,11 +29,32 @@ SocialNetwork.factory('userServices', function ($http, baseServiceUrl) {
 
     user.GetFriendRequests = function (success, error) {
         $http.get(baseServiceUrl + '/me/requests', {headers: this.GetHeaders()})
-            .success(function (data) {
+            .success(function (data, headers) {
                 success(data)
             }).error(error);
     };
 
+    user.AcceptFriendRequest = function (id, headers, success, error) {
+        $http.put(baseServiceUrl + '/me/requests/'+ id + '?status=approved', {headers: headers})
+            .success(function (data, headers) {
+                success(data)
+            }).error(error);
+    };
+
+    user.DeclineFriendRequest = function (id, success, error) {
+        $http.put(baseServiceUrl + '/me/requests/'+ id + '?status=rejected', {headers: this.GetHeaders()})
+            .success(function (data, headers) {
+                console.log("tuka ne me kefi");
+                success(data)
+            }).error(error);
+    };
+
+    user.SendFriendRequest = function (username, headers, success, error) {
+        $http.post(baseServiceUrl + '/me/requests/'+ username, {headers: headers})
+            .success(function (data) {
+                success(data)
+            }).error(error);
+    };
 
     user.GetHeaders = function() {
         return {

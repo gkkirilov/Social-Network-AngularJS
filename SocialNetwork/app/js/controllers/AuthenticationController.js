@@ -51,8 +51,6 @@ SocialNetwork.controller('AuthenticationController', function ($scope, $location
         ClearData();
         $location.path('/');
         authentication.ClearCredentials();
-        //mainData.clearParams();
-        //$route.reload();
     };
 
     $scope.editUser = function () {

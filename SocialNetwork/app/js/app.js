@@ -42,6 +42,10 @@ SocialNetwork.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'templates/userWall.html',
             controller: 'MainController'
         })
+        .when('/users/:username/friends',{
+            templateUrl: 'templates/userFriends.html',
+            controller: 'MainController'
+        })
         .otherwise({redirectTo: '/'})
 });
 

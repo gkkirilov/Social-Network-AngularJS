@@ -6,7 +6,6 @@ SocialNetwork.factory('postServices', function ($http, baseServiceUrl) {
 
     post.ShowMyFeed = function (success, error) {
         $http.get(baseServiceUrl + '/me/feed?StartPostId&PageSize=5', {headers: this.GetHeaders()})
-            //TODO: Make pagination and put varibles into url
             .success(function (data, status, headers, config) {
                 success(data)
             }).error(error);
@@ -14,7 +13,6 @@ SocialNetwork.factory('postServices', function ($http, baseServiceUrl) {
 
     post.ShowUserWall = function (path, success, error) {
         $http.get(baseServiceUrl + '/users/'+ path +'/wall?StartPostId&PageSize=5', {headers: this.GetHeaders()})
-            //TODO: Make pagination and put varibles into url
             .success(function (data, status, headers, config) {
                 success(data)
             }).error(error);

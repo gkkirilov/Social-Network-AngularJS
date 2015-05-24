@@ -1,8 +1,11 @@
 <div ng-include="'templates/navbar.html'"></div>
 <div class="container fix-top-el">
     <div class="container col-lg-8 ">
-        <div>
-
+        <div ng-controller="UserController" ng-init="getUserFullData()">
+            <img class="col-lg-3" data-ng-src="{{userCurrentData.profileImageData}}" alt="Profile Picture"/>
+            <img class="col-lg-3" data-ng-src="{{userCurrentData.coverImageData}}" alt="Cover Picture"/>
+            <span ng-bind="userCurrentData.name"></span>
+            <button ng-click="sendFriendRequest(userCurrentData.username)">Send Request</button>
         </div>
         <form class="form-horizontal post" ng-controller="PostController" ng-submit="addPost()">
             <div class="form-group">
