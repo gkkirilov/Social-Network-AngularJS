@@ -5,12 +5,13 @@
             <a ng-init="showMyFeed()"></a>
             <li class="form-group" ng-repeat="feed in feedData">
                 <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
+                    <div class="panel-heading ">
+                        <h3 class="panel-title ">
                             <img class="col-lg-3" data-ng-src="{{feed.author.profileImageData}}" alt="Profile Picture"/>
-                            <div class="top-left">{{feed.author.name}}</div>
+                            <div class="top-left ">{{feed.author.name}}</div>
                             <span class="small">{{feed.date | date:"MM/dd/yyyy 'at' h:mma"}}</span>
-                            <button class="btn btn-info pull-right" id="likeButton" ng-click="likePost(feed.id)">Like</button>
+                            <button class="btn btn-info pull-right" ng-click="likePost(feed.id)">Like</button>
+                            <button class="btn btn-danger pull-right" ng-click="deletePost(feed.id)">Delete</button>
                             <div class="badge pull-right" >Likes {{feed.likesCount}}</div>
                         </h3>
                     </div>
@@ -29,7 +30,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Friends {{friendsPreview.friends.length}}</h3>
+                            <h3 class="panel-title"><a href="#/friends">Friends</a> {{friendsPreview.friends.length}}</h3>
                         </div>
                         <div class="panel-body" ng-repeat="friend in friendsPreview.friends | limitTo:6">
                             <img data-ng-src="{{friend.profileImageData}}"/>

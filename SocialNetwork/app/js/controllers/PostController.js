@@ -49,4 +49,16 @@ SocialNetwork.controller('PostController', function ($scope, $location, $route, 
             });
     };
 
+    $scope.deletePost = function (id) {
+        console.log(id);
+        postServices.DeletePost(id,
+            function (serverData) {
+                notifyService.showInfo("Successfully deleted the post!");
+                console.log(serverData);
+            },
+            function (serverError) {
+                notifyService.showError("Couldn't delete the post", serverError)
+            });
+    };
+
 });
